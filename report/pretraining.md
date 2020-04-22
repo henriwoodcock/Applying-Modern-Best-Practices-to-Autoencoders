@@ -15,9 +15,6 @@ A decoder architecture can be defined which takes this bottleneck back to input 
 Once learning has reached a plateau then a discriminative layer as described in [6], this allows us to retain the information found in the pretrained network (especially in the early layers) but also slightly tweak the weights and biases to fit the autoencoder. To do this, lower learning rates are applied to the early layers in the autoencoder which increase through the network. The decoder keeps a constant learning rate which is higher than the encoder so it can be tweaked quicker to fit the encoder.
 
 
-
-<a name="imageNetFootNote">1</a>: The ImageNet Large Scale Visual Recognition Challenge (ILSVRC) is an object detection and image classification competition which has been known to push computer vision research but also allow for comparison of results.
-
 [1] Olga Russakovsky*, Jia Deng*, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma, Zhiheng Huang, Andrej Karpathy, Aditya Khosla, Michael Bernstein, Alexander C. Berg and Li Fei-Fei. (* = equal contribution). _ImageNet Large Scale Visual Recognition Challenge_. IJCV. 2015.
 
 [2] Dave Gershgorn. _The Quartz guide to artificial intelligence: What is it, why is it important, and should we be afraid?_. Quartz, 2017. Retrieved April 2020.
@@ -29,3 +26,6 @@ Once learning has reached a plateau then a discriminative layer as described in 
 [5] Olah, et al.,. _Feature Visualization_. Distill, 2017.
 
 [6] Jeremy Howard, Sebastian Ruder. _Universal Language Model Fine-tuning for Text Classification_. arXiv, 2018. arXiv:1801.06146.
+
+
+<a name="imageNetFootNote">1</a>: The ImageNet Large Scale Visual Recognition Challenge (ILSVRC) is an object detection and image classification competition which has been known to push computer vision research but also allow for comparison of results.
