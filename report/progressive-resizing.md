@@ -25,6 +25,8 @@ In autoencoders this is slightly different as we attempt to reverse the downsamp
 
 Therefore to use this in autoencoders we either need to train two versions of the network. The first is for the lower resolution images, and the second is then for the higher resolution images. For each increase in resolution we just need to insert a new upsampling layer. This should be fine as we can train the network and then just add a head on top. This means we can use our initial training and the weights on the last layer can be learned independently and then fine-tuned with the rest of the network.
 
+
+# References
 [1] Tero Karras, Timo Aila, Samuli Laine, Jaakko Lehtinen. _Progressive Growing of GANs for Improved Quality, Stability, and Variation_. arXiv, 2018. arXiv:1710.10196.
 
 [2] Bee Lim, Sanghyun Son, Heewon Kim, Seungjun Nah, Kyoung Mu Lee. _Enhanced Deep Residual Networks for Single Image Super-Resolution_. arXiv, 2017. arXiv:1707.02921.

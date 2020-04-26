@@ -14,6 +14,7 @@ A decoder architecture can be defined which takes this bottleneck back to input 
 
 Once learning has reached a plateau then a discriminative layer as described in [6], this allows us to retain the information found in the pretrained network (especially in the early layers) but also slightly tweak the weights and biases to fit the autoencoder. To do this, lower learning rates are applied to the early layers in the autoencoder which increase through the network. The decoder keeps a constant learning rate which is higher than the encoder so it can be tweaked quicker to fit the encoder.
 
+# References
 
 [1] Olga Russakovsky*, Jia Deng*, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma, Zhiheng Huang, Andrej Karpathy, Aditya Khosla, Michael Bernstein, Alexander C. Berg and Li Fei-Fei. (* = equal contribution). _ImageNet Large Scale Visual Recognition Challenge_. IJCV. 2015.
 
@@ -21,7 +22,7 @@ Once learning has reached a plateau then a discriminative layer as described in 
 
 [3] David Silver1*, Aja Huang1*, Chris J. Maddison1, Arthur Guez1, Laurent Sifre1, George van den Driessche1, Julian Schrittwieser1, Ioannis Antonoglou1, Veda Panneershelvam1, Marc Lanctot1, Sander Dieleman1, Dominik Grewe1, John Nham2, Nal Kalchbrenner1, Ilya Sutskever2, Timothy Lillicrap1, Madeleine Leach1, Koray Kavukcuoglu1, Thore Graepel1 and Demis Hassabis1. (* = equal contribution). _Mastering the game of Go with deep neural networks and tree search_. Nature, 2016. __529__(7587), pp. 484–489.
 
-[4] Simon Kornblith, Jonathon Shlens, Quoc V. Le. _Do Better ImageNet Models Transfer Better?_. arXiv, 2019. arXiv:1805.08974
+[4] Simon Kornblith, Jonathon Shlens and Quoc V. Le. _Do Better ImageNet Models Transfer Better?_. arXiv, 2019. arXiv:1805.08974
 
 [5] Olah, et al.,. _Feature Visualization_. Distill, 2017.
 
