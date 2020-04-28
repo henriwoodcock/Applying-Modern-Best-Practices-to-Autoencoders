@@ -19,4 +19,6 @@ Combining pixel shuffle and pretraining achieves far better results than standar
 
 
 # Conclusion
-Overall when attempting to use an autoencoder as a compression system, visual pleasing results are difficult to achieve and may not be possible
+Overall when attempting to use an autoencoder as a compression system, visual pleasing results are difficult to achieve and may not be possible.
+
+One aspect of an autoencoder that was not mentioned here was the information held in the encoder. In many situations the encoded format is the most important part and so it is best to optimise this instead of the overall output from the autoencoder.
