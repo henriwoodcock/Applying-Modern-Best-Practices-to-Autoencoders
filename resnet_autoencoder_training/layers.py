@@ -59,3 +59,32 @@ class Upsample(nn.Module):
       x = self.bn(x)
       x = self.conv1(x)
       return x
+
+def icnr(x, scale=2, init=nn.init.kaiming_normal_):
+    "ICNR init of `x`, with `scale` and `init` function."
+    ni,nf,h,w = x.shape
+    ni2 = int(ni/(scale**2))
+    k = init(torch.zeros([ni2,nf,h,w])).transpose(0, 1)
+    k = k.contiguous().view(ni2, nf, -1)
+    k = k.repeat(1, 1, scale**2)
+    k = k.contiguous().view([nf,ni,h,w]).transpose(0, 1)
+    x.data.copy_(k)
+
+class PixelShuffle_ICNR(nn.Module):
+    "Upsample by `scale` from `ni` filters to `nf` (default `ni`), using `nn.PixelShuffle`, `icnr` init, and `weight_norm`."
+    def __init__(self, ni:int, nf:int=None, scale:int=2, blur:bool=False, norm_type=NormType.Weight):
+        super().__init__()
+        nf = ifnone(nf, ni)
+        self.conv = conv_layer(ni, nf*(scale**2), ks=1, norm_type=norm_type, use_activ=False)
+        icnr(self.conv[0].weight)
+        self.shuf = nn.PixelShuffle(scale)
+        # Blurring over (h*w) kernel
+        # "Super-Resolution using Convolutional Neural Networks without Any Checkerboard Artifacts"
+        # - https://arxiv.org/abs/1806.02658
+        self.pad = nn.ReplicationPad2d((1,0,1,0))
+        self.blur = nn.AvgPool2d(2, stride=1)
+        self.relu = nn.ReLU(inplace = True)
+
+    def forward(self,x):
+        x = self.shuf(self.relu(self.conv(x)))
+        return self.blur(self.pad(x)) if self.blur else x
