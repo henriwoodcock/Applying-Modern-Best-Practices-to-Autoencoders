@@ -12,6 +12,10 @@ Pixel shuffle achieves better results in certain situations when measuring with 
 
 ### Feature Loss
 
+### Progressive Resizing
+Progressive resizing appears to lead to better generalisation. After being initially trained on smaller images, when trained on larger images, the train and validation loss appear closer in earlier epochs suggesting that this technique leads to more general solutions. However, this effect becomes unnoticeable after 20 epochs, suggesting that more data is still the more powerful solution.
+
+To further this research the model trained on both 16x16 and 32x32 images should be used to recreate a 16x16  and 32x32 image, then compare this with the model purely trained on 32x32. This could show that the first leads to a general solution to the problem.
 ### Combining methods
 
 #### Pixel shuffle and Pretraining
