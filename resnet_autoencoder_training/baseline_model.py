@@ -1,15 +1,15 @@
-import layers
+import model_layers
 import torch
 from torch import nn
 
 class encoder(nn.Module):
     def __init__(self):
         super(encoder, self).__init__()
-        self.convblock1 = layers.convblock(3,12)
-        self.downsamp1 = layers.downsamp(12, 16)
+        self.convblock1 = model_layers.convblock(3,12)
+        self.downsamp1 = model_layers.downsamp(12, 16)
 
-        self.convblock2 = layers.convblock(12,24)
-        self.downsamp2 = layers.downsamp(24, 8)
+        self.convblock2 = model_layers.convblock(12,24)
+        self.downsamp2 = model_layers.downsamp(24, 8)
 
         self.bottleneck = nn.Sequential(nn.Flatten(),
                                         nn.Linear(24 * 8 * 8, 1000)
@@ -33,8 +33,8 @@ class decoder(nn.Module):
                                         layers.reshape([-1,24,8,8])
                                         )
 
-        self.up1 = layers.Upsample(24,12)
-        self.up2 = layers.Upsample(12,3)
+        self.up1 = model_layers.Upsample(24,12)
+        self.up2 = model_layers.Upsample(12,3)
 
     def forward(self,x):
         x = self.bottleneck(x)

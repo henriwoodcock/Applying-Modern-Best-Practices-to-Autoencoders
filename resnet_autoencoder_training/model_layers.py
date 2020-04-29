@@ -1,5 +1,8 @@
 import torch
 from torch import nn
+from fastai.torch_core import *
+from fastai.core import ifnone
+from fastai.layers import *
 
 class reshape(nn.Module):
     '''a torch layer to reshape the input into size = shape = type list'''
@@ -61,7 +64,7 @@ class Upsample(nn.Module):
       return x
 
 def icnr(x, scale=2, init=nn.init.kaiming_normal_):
-    "ICNR init of `x`, with `scale` and `init` function."
+    '''ICNR init of `x`, with `scale` and `init` function.'''
     ni,nf,h,w = x.shape
     ni2 = int(ni/(scale**2))
     k = init(torch.zeros([ni2,nf,h,w])).transpose(0, 1)
@@ -71,7 +74,7 @@ def icnr(x, scale=2, init=nn.init.kaiming_normal_):
     x.data.copy_(k)
 
 class PixelShuffle_ICNR(nn.Module):
-    "Upsample by `scale` from `ni` filters to `nf` (default `ni`), using `nn.PixelShuffle`, `icnr` init, and `weight_norm`."
+    '''Upsample by `scale` from `ni` filters to `nf` (default `ni`), using `nn.PixelShuffle`, `icnr` init, and `weight_norm`.'''
     def __init__(self, ni:int, nf:int=None, scale:int=2, blur:bool=False, norm_type=NormType.Weight):
         super().__init__()
         nf = ifnone(nf, ni)

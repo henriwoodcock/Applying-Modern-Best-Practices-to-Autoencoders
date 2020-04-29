@@ -1,16 +1,15 @@
-import layers
+import model_layers
 import torch
 from torch import nn
-from fastai import *
-from fastai.vision import *
+from fastai.layers import NormType
 
 class encoder(nn.Module):
     def __init__(self):
         super(encoder, self).__init__()
-        self.convblock1 = layers.convblock(3,12)
-        self.downsamp1 = layers.downsamp(12, 16)
-        self.convblock2 = layers.convblock(12,24)
-        self.downsamp2 = layers.downsamp(24, 8)
+        self.convblock1 = model_layers.convblock(3,12)
+        self.downsamp1 = model_layers.downsamp(12, 16)
+        self.convblock2 = model_layers.convblock(12,24)
+        self.downsamp2 = model_layers.downsamp(24, 8)
         self.bottleneck = nn.Sequential(nn.Flatten(),
                                         nn.Linear(24 * 8 * 8, 1000)
                                         )
@@ -27,11 +26,11 @@ class decoder(nn.Module):
         super(decoder, self).__init__()
 
         self.bottleneck = nn.Sequential(nn.Linear(1000, 24 * 8 * 8),
-                                        layers.reshape([-1,24,8,8])
+                                        model_layers.reshape([-1,24,8,8])
                                         )
-        self.up1 = layers.PixelShuffle_ICNR(ni=24,nf=12,scale=2,blur=True,norm_type=NormType.Weight,leaky=None)
+        self.up1 = model_layers.PixelShuffle_ICNR(ni=24,nf=12,scale=2,blur=True,norm_type=NormType.Weight)
         self.bn1 = nn.BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        self.up2 = layers.PixelShuffle_ICNR(ni=12,nf=3,scale=2,blur=True,norm_type=NormType.Weight,leaky=None)
+        self.up2 = model_layers.PixelShuffle_ICNR(ni=12,nf=3,scale=2,blur=True,norm_type=NormType.Weight)
         self.bn2 = nn.BatchNorm2d(3, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
 
     def forward(self,x):
