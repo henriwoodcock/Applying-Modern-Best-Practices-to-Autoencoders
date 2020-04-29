@@ -1,3 +1,6 @@
+import torch
+from torch import nn
+
 class reshape(nn.Module):
     '''a torch layer to reshape the input into size = shape = type list'''
   def __init__(self, shape):
