@@ -49,7 +49,7 @@ class Upsample(nn.Module):
     '''
     def __init__(self, in_:int, out:int, scale:int=2):
       super().__init__()
-      self.upsample = nn.Upsample(scale_factor=2, mode='nearest')
+      self.upsample = nn.Upsample(scale_factor=scale, mode='nearest')
       self.bn = nn.BatchNorm2d(in_, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
       self.conv1 = nn.Sequential(
               nn.Conv2d(in_, out, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)),

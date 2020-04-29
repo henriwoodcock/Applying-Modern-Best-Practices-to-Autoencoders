@@ -30,7 +30,7 @@ class decoder(nn.Module):
         super(decoder, self).__init__()
 
         self.bottleneck = nn.Sequential(nn.Linear(1000, 24 * 8 * 8),
-                                        layers.reshape([-1,24,8,8])
+                                        model_layers.reshape([-1,24,8,8])
                                         )
 
         self.up1 = model_layers.Upsample(24,12)
