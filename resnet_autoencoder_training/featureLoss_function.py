@@ -2,7 +2,8 @@ from fastai.callbacks import *
 from fastai.utils.mem import *
 from torchvision.models import vgg16_bn
 import torch
-from torch import F
+import torch.nn.functional as F
+from fastai.torch_core import requires_grad, children
 
 def gram_matrix(x):
     n,c,h,w = x.size()
