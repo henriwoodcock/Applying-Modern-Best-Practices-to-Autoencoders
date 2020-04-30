@@ -11,7 +11,7 @@ Using a pretrained model achieves the best results.
 Pixel shuffle achieves better results in certain situations when measuring with MSE. When looking for visually pleasing images, it achieves similar to the upsampling technique except contains "defects" instead of blur. Overall this gives a less visually pleasing result. However both results appear unusable.
 
 ### Feature Loss
-
+cell 94
 ### Progressive Resizing
 Progressive resizing appears to lead to better generalisation. After being initially trained on smaller images, when trained on larger images, the train and validation loss appear closer in earlier epochs suggesting that this technique leads to more general solutions. However, this effect becomes unnoticeable after 20 epochs, suggesting that more data is still the more powerful solution.
 
