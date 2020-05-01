@@ -46,8 +46,8 @@ class autoencoder(nn.Module):
     def __init__(self, model_weights):
         super(autoencoder, self).__init__()
 
-        self.encoder = encoder()
-        self.decoder = decoder(model_weights)
+        self.encoder = encoder(model_weights)
+        self.decoder = decoder()
 
     def encode(self, x): return self.encoder(x)
     def decode(self, x): return torch.clamp(self.decoder(x), min = 0, max = 1)
