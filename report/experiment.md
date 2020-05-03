@@ -10,11 +10,12 @@ MSE, MAE and accuracy on a classifier trained on the original images.
 ### MNIST
 | Method        | MAE           | MSE   | Classifier Accuracy | Training Time |
 | :-----------: |:-------------:| :----:|:-------------------:| :--------:|
-| Baseline      | 000000 | 0000 | 00000 | 0m 0s |
-| Pixel Shuffle | 000000 | 0000 | 00000 | 0m 0s |
-| Progressive Resizing | 000000 | 0000 | 00000 | 0m 0s |
-| Pretraining | 000000 | 0000 | 00000 | 0m 0s |
-| Feature Loss | 000000 | 0000 | 00000 | 0m 0s |
+| Baseline      | ........ | 0.000854 | 0.9900 | 24m 43s |
+| Pixel Shuffle | 0.011906 | 0.001174 | 0.9870 | 27m 40s |
+| Progressive Resizing | 0.011891 | 0.001168 | 0.9877 | 24m 44s |
+| Pretraining | 0.018001 | 0.003003 | 0.9804 | 25m 12s |
+| Resnet w/o pretrain | 0.018034 | 0.003589 | 0.9654 | 25m 30s |
+| Feature Loss | 0.075097 | 0.011058 | 0.9886 | 26m 52s |
 
 ### Cifar10
 | Method        | MAE           | MSE   | Classifier Accuracy | Training Time |
