@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Applying Modern Best Practices To Autoencoders
+title: Applying Modern Best Practices to Autoencoders
 mathjax: true
 ---
 
