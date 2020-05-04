@@ -3,6 +3,8 @@ All experiments were run on [Google Colab](https://colab.research.google.com/not
 
 Due to using a free online GPU provided by Google, amount of training is minimal (while still providing good results) as to not take advantage or exploit this product.
 
+This data used for this experiment are the MNIST dataset [1] and the Cifar10 dataset [2]
+
 ## Models
 ![autoencoderModels](AutoencoderDiagrams.svg "Autoencoder Models")
 A total of 6 models will be trained and analysed. The _baseline model_ using mean squared error (MSE) loss, the _pixel shuffle model_ using MSE loss, the baseline model using _progressive resizing_ and MSE loss, the _pretrained model_ both _with_ and _without_ pretrained weights (called Pretrained and Resnet from now on) with an MSE loss and finally the baseline model using a _Feature Loss_ calculated from the VGG16 model.
@@ -108,3 +110,6 @@ Below I list some topics which could be looked into further to see the effects.
 - Combinations of techniques used here (ie featureloss + pixel shuffle etc)
 - Does progressive resizing lead to a more general results for different image sizes
 - Use of similar models on larger images such as those from ImageNet
+
+[1] http://yann.lecun.com/exdb/mnist/
+[2] Alex Krizhevsky. _Learning Multiple Layers of Features from Tiny Images_. 2009. https://www.cs.toronto.edu/~kriz/cifar.html
