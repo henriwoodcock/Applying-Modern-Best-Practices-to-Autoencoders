@@ -1,6 +1,8 @@
 # Experiment
 
-## Model and Baselines
+## Models
+![autoencoderModels](AutoencoderDiagrams.svg "Autoencoder Models")
+
 
 ## Measures
 MSE, MAE and accuracy on a classifier trained on the original images.
