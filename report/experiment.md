@@ -10,6 +10,7 @@ MSE, MAE and accuracy on a classifier trained on the original images.
 ### MNIST
 | Method        | MAE           | MSE   | Classifier Accuracy | Training Time |
 | :-----------: |:-------------:| :----:|:-------------------:| :--------:|
+| Original Image | n/a | n/a |  | n/a |
 | Baseline      | ........ | 0.000854 | 0.9900 | 24m 43s |
 | Pixel Shuffle | 0.011906 | 0.001174 | 0.9870 | 27m 40s |
 | Progressive Resizing | 0.011891 | 0.001168 | 0.9877 | 24m 44s |
@@ -20,11 +21,13 @@ MSE, MAE and accuracy on a classifier trained on the original images.
 ### Cifar10
 | Method        | MAE           | MSE   | Classifier Accuracy | Training Time |
 | :-----------: |:-------------:| :----:|:-------------------:| :--------:|
-| Baseline      | 000000 | 0000 | 00000 | 0m 0s |
-| Pixel Shuffle | 000000 | 0000 | 00000 | 0m 0s |
-| Progressive Resizing | 000000 | 0000 | 00000 | 0m 0s |
-| Pretraining | 000000 | 0000 | 00000 | 0m 0s |
-| Feature Loss | 000000 | 0000 | 00000 | 0m 0s |
+| Original Image | n/a | n/a | 0.8179 | n/a |
+| Baseline      | 0.046274 | 0.004345 | 0.4558 | 23m 47s |
+| Pixel Shuffle | 0.046642 | 0.004385 | 0.4759 | 27m 6s |
+| Progressive Resizing | 0.046132 | 0.004310 | 0.4608 | 23m 5s |
+| Pretraining | 0.076558 | 0.011385 | 0.2333 | 24m 12s |
+| Resnet w/o pretrain | 0.075097 | 0.011058 | 0.2236 | 26m 6s |
+| Feature Loss | 0.046206 | 0.004301 | 0.6209 | 28m 34s |
 
 
 ### Pretraining
