@@ -1,11 +1,18 @@
 # Experiment
+All experiments were run on [Google Colab](https://colab.research.google.com/notebooks/welcome.ipynb) using an assigned GPU at that time, this could mean some models may have used a better GPU than other models, however this will only have an effect on time taken and not the outputs.
+
+Due to using a free online GPU provided by Google, amount of training is minimal (while still providing good results) as to not take advantage or exploit this product.
 
 ## Models
 ![autoencoderModels](AutoencoderDiagrams.svg "Autoencoder Models")
-
+A total of 6 models will be trained and analysed. The _baseline model_ using mean squared error (MSE) loss, the _pixel shuffle model_ using MSE loss, the baseline model using _progressive resizing_ and MSE loss, the _pretrained model_ both _with_ and _without_ pretrained weights (called Pretrained and Resnet from now on) with an MSE loss and finally the baseline model using a _Feature Loss_ calculated from the VGG16 model.
 
 ## Measures
-MSE, MAE and accuracy on a classifier trained on the original images.
+Three measures of accuracy will be used to compare models. Mean squared error, mean absolute error and _classification accuracy_.
+
+To calculate classification accuracy, an image classifier is trained on the original images, then the autoencoded images are ran through to see if the model will still the predict the same. This means that if the encoded and decoded image holds enough information from the original image a similar classification accuracy will be seen. This will mean that recreation of the image is not just important but also content of the image.
+
+Comparing both MAE and MSE can allow us to see which models have more anomalous outputs (which will be represented in the MSE).
 
 ## Results
 All results are based on the testing data supplied by the datasets, and so this data has been unseen by the model in training. Each model was trained for a total of 15 epochs.
