@@ -36,7 +36,7 @@ The best model for the MNIST dataset was the _baseline_ model for all three meas
 ## Discussion
 The first thing to note that due to the _simplicity_ of the MNIST images, it appears that any of the new training techniques becomes overkill for the MNIST images and the baseline (most simple) model works best for this dataset. Due to this it is hard to do a comparison of the techniques apart from saying that for simple images only a simple model is required.
 
-The conclusion from the MNIST dataset is however that images of size 3*32*32=3072 (the input size) can be cut down to an array of size 1000, meaning these images can be stored at 1/3rd of the size and still achieve a similar accuracy on a classifier (0.9912 compared to 0.9900). However an issue with this is that the original images are of size 1*32*32 and are extended to 3*32*32 to make the models comparable between both datasets. This means the images are not compressed as much as it seems if you take the size of the original images (1024 pixels).
+The conclusion from the MNIST dataset is however that images of size 3x32x32=3072 (the input size) can be cut down to an array of size 1000, meaning these images can be stored at 1/3rd of the size and still achieve a similar accuracy on a classifier (0.9912 compared to 0.9900). However an issue with this is that the original images are of size 1x32x32 and are extended to 3x32x32 to make the models comparable between both datasets. This means the images are not compressed as much as it seems if you take the size of the original images (1024 pixels).
 
 When looking at the Cifar-10 results, it can be seen the more complex methods become more beneficial for more complex images. However, the results are still far from perfect. The best measure to see the "usability" of the model is the classifier accuracy as this shows how the images can still be recognised. Looking at this assessment Feature Loss was the best technique which shows when using an autoencoder trying to recreate features is better than trying to recreate each individual pixel.
 
@@ -44,31 +44,58 @@ The downside to using the Feature Loss model is the time it takes to train, taki
 
 The next subsections will show testing set images for each model and discuss what was learned from using each technique. Each image has the input on the left and the model output on the right.
 
+### Baseline
+![cifarBL](images/cifar10-baseline.png "Cifar10 Baseline Results")
+![mnistBL](images/MNIST-baseline.png "MNIST Baseline Results")
+The baseline images for Cifar10 are too blurred and unusable as an autoencoder.
 ### Feature Loss
 ![cifarFL](images/cifar10-featureloss.png "Cifar10 Feature Loss Results")
 ![mnistFL](images/MNIST-featureloss.png "MNIST Feature Loss Results")
 
+When training the Feature Loss model the VGG16 model was used. What was found was that the best way to weight features was to compare with earlier parts of the model and slowly decrease the weighting. This suggests that for autoencoders the most important features are found in the earlier layers, as mentioned before this is due to the first few parts to image classifiers being edge detectors. Detecting these basic features allows shapes of objects to be recreated with less blur than when performing pixel to pixel loss functions.
+
+This is compared to using the middle layers in models such as [DeOldify](https://github.com/jantic/DeOldify) which are looking for more complex features such as fur on animals.
+
+Using the middle to last layers in the autoencoders proved to not be effective and looked to _force_ features into the image which were not actually in the image. Perhaps more work could be done into this to make it work effectively.
+
 ### Pretraining
+#### Pretrained Weights
 ![cifarPT](images/cifar10-pretrained.png "Cifar10 Pretrained Results")
-![cifarresnet](images/cifar10-pretrained.png "Cifar10 Resnet Results")
-
 ![mnistPT](images/MNIST-pretrained.png "MNIST Pretrained Results")
-![mnistresnet](images/MNIST-pretrained.png "MNIST Resnet Results")
+Pretrained weights proved to be ineffective when creating an autoencoder, this is due to the complexity of the encoder (resnet). The initial idea was that a model used to identify objects and classify images would be effective as it would be able to recreate features in the image.
 
-Using a pretrained model achieves the best results.
+The resulting images do appear to separate objects from the background, however both the object and background are a blur and so it is unusable. However this could still mean the encoder is effective for other use cases such as unsupervised learning. The output of the encoder from this autoencoder could be  clustered on to see if images are able to split into classes.
+
+#### Resnet Model
+![cifarresnet](images/cifar10-pretrained.png "Cifar10 Resnet Results")
+![mnistresnet](images/MNIST-pretrained.png "MNIST Resnet Results")
+Similarly with the resnet encoder (without using the pretrained weights), similar results are found suggesting this encoder is just too complex when trying to create an autoencoder.
+
+Again, like above the encoder could be looked into more.
 
 ### Pixel Shuffle
 ![cifarPS](images/cifar10-pixelshuffle.png "Cifar10 Pixel Shuffle Results")
 ![mnistPS](images/MNIST-pixelshuffle.png "MNIST Pixel Shuffle Results")
 
-Pixel shuffle achieves better results in certain situations when measuring with MSE. When looking for visually pleasing images, it achieves similar to the upsampling technique except contains "defects" instead of blur. Overall this gives a less visually pleasing result. However both results appear unusable.
+Pixel shuffle achieves better results in certain situations when measuring with MSE. When looking for visually pleasing images, it achieves similar to the upsampling technique except contains "defects" instead of blur. Overall this gives a less visually pleasing result. Features in the image are slightly more easy to see when compared to the baseline however overall it is still unusable.
 
 ### Progressive Resizing
 ![cifarPR](images/cifar10-progresize.png "Cifar10 Progressive Resizing Results")
-
 ![mnistPR](images/MNIST-progresize.png "MNIST Progressive Resizing Results")
 
+Progressive resizing was effective in reducing training time while also achieving similar results to the baseline model, which suggests this is an effective technique to reduce overall training time.
+
+What is not covered here is the generalisation of the models to differing image sizes, using progressive resizing could force the model to learn more general weights which work for all image sizes, whereas for all the other models the training data was only 32 by 32 images which may not work on other sizes.
+
 # Conclusion
-Overall when attempting to use an autoencoder as a compression system, visual pleasing results are difficult to achieve and may not be possible.
+Overall when attempting to use an autoencoder as a compression system, visual pleasing results are difficult to achieve with images. However this report has shown that achieving the best results in being able to classify an image after encoding and decoding it that pixel to pixel loss is not the best and in fact training the model to try and recreate features in the image is more important.
+
+One drawback to this report is the lack of resources to really train these models and 15 epochs was the max for each model. Perhaps after 100 epochs we could start to see even larger differences and notice the effect of each individual technique more.
 
 One aspect of an autoencoder that was not mentioned here was the information held in the encoder. In many situations the encoded format is the most important part and so it is best to optimise this instead of the overall output from the autoencoder.
+
+## Further Research
+Below I list some topics which could be looked into further to see the effects.
+- Combinations of techniques used here (ie featureloss + pixel shuffle etc)
+- Does progressive resizing lead to a more general results for different image sizes
+- Use of similar models on larger images such as those from ImageNet
