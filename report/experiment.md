@@ -45,28 +45,28 @@ The downside to using the Feature Loss model is the time it takes to train, taki
 The next subsections will show testing set images for each model and discuss what was learned from using each technique. Each image has the input on the left and the model output on the right.
 
 ### Feature Loss
-![cifarFL](/images/cifar10-featureloss.png "Cifar10 Feature Loss Results")
-![mnistFL](/images/MNIST-featureloss.png "MNIST Feature Loss Results")
+![cifarFL](images/cifar10-featureloss.png "Cifar10 Feature Loss Results")
+![mnistFL](images/MNIST-featureloss.png "MNIST Feature Loss Results")
 
 ### Pretraining
-![cifarPT](/images/cifar10-pretrained.png "Cifar10 Pretrained Results")
-![cifarresnet](/images/cifar10-pretrained.png "Cifar10 Resnet Results")
+![cifarPT](images/cifar10-pretrained.png "Cifar10 Pretrained Results")
+![cifarresnet](images/cifar10-pretrained.png "Cifar10 Resnet Results")
 
-![mnistPT](/images/MNIST-pretrained.png "MNIST Pretrained Results")
-![mnistresnet](/images/MNIST-pretrained.png "MNIST Resnet Results")
+![mnistPT](images/MNIST-pretrained.png "MNIST Pretrained Results")
+![mnistresnet](images/MNIST-pretrained.png "MNIST Resnet Results")
 
 Using a pretrained model achieves the best results.
 
 ### Pixel Shuffle
-![cifarPS](/images/cifar10-pixelshuffle.png "Cifar10 Pixel Shuffle Results")
-![mnistPS](/images/MNIST-pixelshuffle.png "MNIST Pixel Shuffle Results")
+![cifarPS](images/cifar10-pixelshuffle.png "Cifar10 Pixel Shuffle Results")
+![mnistPS](images/MNIST-pixelshuffle.png "MNIST Pixel Shuffle Results")
 
 Pixel shuffle achieves better results in certain situations when measuring with MSE. When looking for visually pleasing images, it achieves similar to the upsampling technique except contains "defects" instead of blur. Overall this gives a less visually pleasing result. However both results appear unusable.
 
 ### Progressive Resizing
-![cifarPR](/images/cifar10-progresize.png "Cifar10 Progressive Resizing Results")
+![cifarPR](images/cifar10-progresize.png "Cifar10 Progressive Resizing Results")
 
-![mnistPR](/images/MNIST-progresize.png "MNIST Progressive Resizing Results")
+![mnistPR](images/MNIST-progresize.png "MNIST Progressive Resizing Results")
 
 # Conclusion
 Overall when attempting to use an autoencoder as a compression system, visual pleasing results are difficult to achieve and may not be possible.
