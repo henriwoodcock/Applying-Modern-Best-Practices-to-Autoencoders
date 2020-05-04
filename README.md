@@ -1,6 +1,6 @@
 # resnet-autoencoder-training
 
-## Contents 
+## Contents
 1. [Introduction](#Introduction)
 2. [Autoencoder Training Techniques](#Autoencoder-Training-Techniques)
 3. [The Code](#The-Code)
@@ -24,6 +24,12 @@ f(x) = z
 g(z) = x
 ```
 The aim is to learn functions f and g.
+
+### References
+[1] Ian Goodfellow, Yoshua Bengio and Aaron Courville. _Deep Learning_. MIT Press, 2016. http://www.deeplearningbook.org
+
+[2] Chong Zhou and Randy C. Paffenroth. _Anomaly Detection with Robust Deep Autoencoders_. 2017. Proceedings of the 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, pp. 665-674. DOI: 10.1145/3097983.3098052.
+
 
 ## Autoencoder Training Techniques
 The following modern best practices have been applied to autoencoders:
