@@ -73,29 +73,29 @@ Optimal learning rates for each model were found through calculating the loss wi
 The best model for the MNIST dataset was the _baseline_ model for all three measurements. For the Cifar-10 dataset, the best model for MSE and Classifier Accuracy was the _Feature Loss_ model, however the _Pixel Shuffle_ model achieved the lowest MAE. Overall making the Feature Loss model the best for Cifar-10.
 
 ### Baseline
-![cifarBL](images/cifar10-baseline.png "Cifar10 Baseline Results")
-![mnistBL](images/MNIST-baseline.png "MNIST Baseline Results")
+![cifarBL](report/images/cifar10-baseline.png "Cifar10 Baseline Results")
+![mnistBL](report/images/MNIST-baseline.png "MNIST Baseline Results")
 
 ### Feature Loss
-![cifarFL](images/cifar10-featureloss.png "Cifar10 Feature Loss Results")
-![mnistFL](images/MNIST-featureloss.png "MNIST Feature Loss Results")
+![cifarFL](report/images/cifar10-featureloss.png "Cifar10 Feature Loss Results")
+![mnistFL](report/images/MNIST-featureloss.png "MNIST Feature Loss Results")
 
 ### Pretraining
 #### Pretrained Weights
-![cifarPT](images/cifar10-pretrained.png "Cifar10 Pretrained Results")
-![mnistPT](images/MNIST-pretrained.png "MNIST Pretrained Results")
+![cifarPT](report/images/cifar10-pretrained.png "Cifar10 Pretrained Results")
+![mnistPT](report/images/MNIST-pretrained.png "MNIST Pretrained Results")
 
 #### Resnet Model
-![cifarresnet](images/cifar10-pretrained.png "Cifar10 Resnet Results")
-![mnistresnet](images/MNIST-pretrained.png "MNIST Resnet Results")
+![cifarresnet](report/images/cifar10-pretrained.png "Cifar10 Resnet Results")
+![mnistresnet](report/images/MNIST-pretrained.png "MNIST Resnet Results")
 
 ### Pixel Shuffle
-![cifarPS](images/cifar10-pixelshuffle.png "Cifar10 Pixel Shuffle Results")
-![mnistPS](images/MNIST-pixelshuffle.png "MNIST Pixel Shuffle Results")
+![cifarPS](report/images/cifar10-pixelshuffle.png "Cifar10 Pixel Shuffle Results")
+![mnistPS](report/images/MNIST-pixelshuffle.png "MNIST Pixel Shuffle Results")
 
 ### Progressive Resizing
-![cifarPR](images/cifar10-progresize.png "Cifar10 Progressive Resizing Results")
-![mnistPR](images/MNIST-progresize.png "MNIST Progressive Resizing Results")
+![cifarPR](report/images/cifar10-progresize.png "Cifar10 Progressive Resizing Results")
+![mnistPR](report/images/MNIST-progresize.png "MNIST Progressive Resizing Results")
 
 # Full Report
 There is a full report explaining each method and training technique as well as a dicussion of the results available [here as a pdf] and [here on my website].
