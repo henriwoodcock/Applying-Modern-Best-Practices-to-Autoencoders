@@ -8,5 +8,13 @@ __pycache__/
 
 
 data/
+notebooks/cifar_autoencoder_joint_training.ipynb
+notebooks/cifar_classification.ipynb
+notebooks/cifar-classification.ipynb
+notebooks/cifar10_featureloss_tests.ipynb
+notebooks/cifar10_progressive_resizing.ipynb
+notebooks/PretrainingExample.ipynb
+notebooks/ResnetEncoderDecoder.ipynb
+notebooks/stage-1-cifar.pth
 
 *.zip
