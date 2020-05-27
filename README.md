@@ -103,4 +103,4 @@ The best model for the MNIST dataset was the _baseline_ model for all three meas
 ![mnistPR](report/images/MNIST-progresize.png "MNIST Progressive Resizing Results")
 
 # Full Report
-There is a full report explaining each method and training technique as well as a dicussion of the results available [here as a pdf] and [here on my website].
+There is a full report explaining each method and training technique as well as a dicussion of the results available [here on my website].
